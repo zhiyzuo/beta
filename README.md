@@ -23,3 +23,5 @@
 <p>I have not had time to figure out how to implement <code>insert into user ...</code> now. 
 If you have got any ideas, please go head and update the codes and push it back with proper comments.
 You can also edit this page for demonstration.</p>
+
+<p>However, before you can push this back here, you have to let me add you into the collaborators' list. Just <a href="mailto:zhiya-zuo@uiowa.edu?Subject=Github%20Beta%20Issues" target="_top">send</a> me an email.</p>
