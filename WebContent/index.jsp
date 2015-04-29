@@ -9,6 +9,8 @@
 <body>
 <h1>Beta</h1>
 
+<p>hahah</p>
+
 <div><a href="./register.jsp"><button>Register</button></a></div>
 <div><a href="./login.jsp"><button>Login</button></a></div>
 
