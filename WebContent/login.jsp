@@ -5,8 +5,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title> Login</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- styles for this signin page -->
+<link href="./css/signin.css" rel="stylesheet">
+
 </head>
 <body>
-This is a page for login.
+	<form class="form-signin">
+        <h2 class="form-signin-heading">Researcher</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="username" id="inputusername" class="form-control" placeholder="Username" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+	</form>
 </body>
 </html>
