@@ -2,6 +2,14 @@
 
 <p>This is place where we manage our code.</p>
 
+<h3>Update</h3>
+
+<p>I have updated the user tables and realize the functionality of login and logout. Please feel free to try it out: </p>
+<blockquote> username: <code>1</code> and password: <code>demo</code> </blockquote>
+
+<p>However, before you can push this back here, you have to let me add you into the collaborators' list. Just <a href="mailto:zhiya-zuo@uiowa.edu?Subject=Github%20Beta%20Issues" target="_top">send</a> me an email.</p>
+
+
 <h3>Using terminal</h3>
 <li>
 <p>Use <code>cd mydirecotry</code> command go to the directory where you want to place the code.</p>
@@ -18,10 +26,3 @@
 
 <p>If your computer runs <b>Windows</b>, you probably would need to install <a href="https://github.com/">GitHub</a> first.<p>
 
-<hr>
-
-<p>I have not had time to figure out how to implement <code>insert into user ...</code> now. 
-If you have got any ideas, please go head and update the codes and push it back with proper comments.
-You can also edit this page for demonstration.</p>
-
-<p>However, before you can push this back here, you have to let me add you into the collaborators' list. Just <a href="mailto:zhiya-zuo@uiowa.edu?Subject=Github%20Beta%20Issues" target="_top">send</a> me an email.</p>
