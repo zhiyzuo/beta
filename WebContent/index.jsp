@@ -45,6 +45,26 @@
     </div>
 
     
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Author</h2>
+          <p>Click here to search for authors. </p>
+          <p><a class="btn btn-default" href="#" role="button">More... &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Publications</h2>
+          <p>Click here to search for publications. </p>
+          <p><a class="btn btn-default" href="#" role="button">More... &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Trials</h2>
+          <p>Click here to search for trails. </p>
+          <p><a class="btn btn-default" href="#" role="button">More... &raquo;</a></p>
+        </div>
+      </div>
+    
       <hr>
 
       <footer>
@@ -58,6 +78,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 
 </body>
 </html>
