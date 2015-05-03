@@ -19,9 +19,12 @@
 		<center>
 			You will be redirected to home page in<br><br>
 			<input type="text" size="3" name="countdown" readonly>	
-			seconds
+			seconds <br><br>
+			<a href="./index.jsp">Go to home page now...</a>
 		</center>
 	</form>
+	
+	
 
 	<script>
 	

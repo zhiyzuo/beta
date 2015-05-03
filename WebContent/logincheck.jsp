@@ -22,6 +22,7 @@
 	 	rs = st.executeQuery("select * from beta.user_demo where username='" + username + "' and password='" + password + "'");
 	    if (rs.next()) {
 	        session.setAttribute("username", username);
+	        session.setAttribute("password", password);
 	        response.sendRedirect("home.jsp");
 	        con.close();
 	    } 
