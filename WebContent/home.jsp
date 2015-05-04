@@ -31,8 +31,7 @@ function resetForm($form) {
 		
 		rs = st.executeQuery("select * from beta.user_info where id = '" 
 			+ session.getAttribute("username") + "';");
-		while(rs.next()) {
-			session.setAttribute("name", rs.getString(2) + ", " + rs.getString(3));
+		while(rs.next()) {	
 			session.setAttribute("dept", rs.getString(4));
 			session.setAttribute("phone", rs.getString(5));
 			session.setAttribute("email", rs.getString(6));
@@ -94,9 +93,11 @@ function resetForm($form) {
 	</div>
 
 	<br>
-<center> 	
-	<a href="logout.jsp">Logout</a> 
-</center>
+
+	<div class="container" align="center">
+		<a href=<%="index.jsp?username=" + session.getAttribute("username") %>>Home Page</a> 
+		<a href="logout.jsp">Logout</a> 
+	</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

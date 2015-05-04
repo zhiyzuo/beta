@@ -23,9 +23,15 @@
 		<div class="container">
         	<div class="navbar-header">
           	<ul class="nav nav-tabs">
-  			<li role="presentation" class="active"><a href="index.jsp">Home</a></li>
+  			<li role="presentation"><a href="index.jsp">Home</a></li>
+  			<li role="presentation" class="active"><a href="basicauthorsearch.jsp">Basic Search</a></li>
   			<li role="presentation"><a href="advancedauthorsearch.jsp">Advanced Search</a></li>
-  			<li role="presentation"><a href="login.jsp">Login</a></li>
+  			
+  			<c:set var="current_user" value='<%=session.getAttribute("username") %>'/>
+	        <c:if test="${empty current_user}">
+  				<li role="presentation"><a href="login.jsp">Login</a></li>
+  			</c:if>
+  			
 			</ul>
 			</div>
 		</div>

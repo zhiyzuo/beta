@@ -1,3 +1,4 @@
+<%@page import="org.eclipse.jdt.internal.compiler.ast.IfStatement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <%@ page import ="java.sql.*" %>
 <html> 
@@ -9,6 +10,7 @@
 </head> 
 <body>
 	 <%
+	 
 	 	Class.forName("org.postgresql.Driver");
 		Connection con = DriverManager.getConnection(
 				"jdbc:postgresql://neuromancer.icts.uiowa.edu/institutional_repository", 
@@ -21,9 +23,16 @@
 	 	
 	 	rs = st.executeQuery("select * from beta.user_demo where username='" + username + "' and password='" + password + "'");
 	    if (rs.next()) {
+	    	ResultSet rs_info = st.executeQuery("select last_name, first_name from beta.user_info where id = '" 
+	    			+ username + "';");
+	    	if(rs_info.next()) {
+	    		session.setAttribute("name", rs_info.getString(1) + ", " + rs_info.getString(2));
+	    	}
+	    	
+	    	
 	        session.setAttribute("username", username);
 	        session.setAttribute("password", password);
-	        response.sendRedirect("home.jsp");
+	        response.sendRedirect("index.jsp?username=" + username);
 	        con.close();
 	    } 
 	 	else { 

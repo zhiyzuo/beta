@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,16 +25,25 @@
           <a class="navbar-brand" href="#">Beta</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" action="logincheck.jsp" method="post">
-            <div class="form-group">
-              <input type="text" name="username" placeholder="Username" class="form-control" required autofocus>
-            </div>
-            <div class="form-group">
-              <input type="password" name="password"  placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
+	        <c:set var="current_user" value='<%=session.getAttribute("username") %>'/>
+	        <c:if test="${empty current_user}">
+	          <form class="navbar-form navbar-right" action="logincheck.jsp" method="post">
+	            <div class="form-group">
+	              <input type="text" name="username" placeholder="Username" class="form-control" required autofocus>
+	            </div>
+	            <div class="form-group">
+	              <input type="password" name="password"  placeholder="Password" class="form-control">
+	            </div>
+	            <button type="submit" class="btn btn-success">Sign in</button>
+	          </form>
+	        </c:if>
+	        <c:if test="${not empty current_user}">
+	        	<ul class="nav navbar-nav navbar-right">
+	            	<li><a href=<%="./home.jsp?username=" + session.getAttribute("username") %>>Hello, <%=session.getAttribute("name") %></a></li>
+          		</ul>
+	        </c:if>
         </div><!--/.navbar-collapse -->
+        
       </div>
     </nav>
 
