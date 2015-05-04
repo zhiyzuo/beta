@@ -40,6 +40,7 @@
 	        <c:if test="${not empty current_user}">
 	        	<ul class="nav navbar-nav navbar-right">
 	            	<li><a href=<%="./home.jsp?username=" + session.getAttribute("username") %>><%=session.getAttribute("name") %></a></li>
+	            	<li><a href="./logout.jsp">Logout</a></li>
           		</ul>
 	        </c:if>
         </div><!--/.navbar-collapse -->
