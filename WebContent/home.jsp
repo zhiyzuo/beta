@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home</title>
+<title><%=session.getAttribute("name")%>'s Home Page</title>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -53,6 +53,12 @@ function resetForm($form) {
 		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
 	  		View profile
 		</button>
+		<a class="btn btn-success btn-sm"  href=<%="index.jsp?username=" + session.getAttribute("username") %>>
+			Home
+		</a>
+		<a class="btn btn-danger btn-sm"  href="logout.jsp" %>
+			Logout
+		</a>
       </div>
     </div>
 	
@@ -93,11 +99,6 @@ function resetForm($form) {
 	</div>
 
 	<br>
-
-	<div class="container" align="center">
-		<a href=<%="index.jsp?username=" + session.getAttribute("username") %>>Home Page</a> 
-		<a href="logout.jsp">Logout</a> 
-	</div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
