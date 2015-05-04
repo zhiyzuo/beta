@@ -39,7 +39,7 @@
 	        </c:if>
 	        <c:if test="${not empty current_user}">
 	        	<ul class="nav navbar-nav navbar-right">
-	            	<li><a href=<%="./home.jsp?username=" + session.getAttribute("username") %>>Hello, <%=session.getAttribute("name") %></a></li>
+	            	<li><a href=<%="./home.jsp?username=" + session.getAttribute("username") %>><%=session.getAttribute("name") %></a></li>
           		</ul>
 	        </c:if>
         </div><!--/.navbar-collapse -->
@@ -50,7 +50,12 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Hello, world!</h1>
+      	<c:if test='${not empty current_user}'>
+        	<h1>Hello, <%=session.getAttribute("name") %></h1>
+        </c:if>
+        <c:if test='${empty current_user}'>
+        	<h1>Hello, Guest</h1>
+        </c:if>
         <p>This is a demo page for Beta Team Project.</p>
       </div>
     </div>
