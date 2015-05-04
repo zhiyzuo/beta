@@ -25,7 +25,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" action="logincheck.jsp" method="post">
             <div class="form-group">
-              <input type="text" name="username" placeholder="Username" class="form-control">
+              <input type="text" name="username" placeholder="Username" class="form-control" required autofocus>
             </div>
             <div class="form-group">
               <input type="password" name="password"  placeholder="Password" class="form-control">
@@ -51,7 +51,7 @@
         <div class="col-md-4">
           <h2>Author</h2>
           <p>Click here to search for authors. </p>
-          <p><a class="btn btn-default" href="#" role="button">More... &raquo;</a></p>
+          <p><a class="btn btn-default" href="./basicauthorsearch.jsp" role="button">More... &raquo;</a></p>
         </div>
         <div class="col-md-4">
           <h2>Publications</h2>
