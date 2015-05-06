@@ -26,7 +26,9 @@
   			<li role="presentation"><a href="index.jsp">Home</a></li>
   			<li role="presentation"><a href="basicauthorsearch.jsp">Basic Search</a></li>
   			<li role="presentation"><a href="advancedauthorsearch.jsp">Advanced Search</a></li>
+  			<li role="presentation"><a href="browse.jsp">Browse</a>
   			<li role="presentation"><a href="login.jsp">Login</a></li>
+  			
 			</ul>
 			</div>
 		</div>
@@ -43,6 +45,7 @@
 		<sql:param value="${param.first}"/>
 		<sql:param value="${param.lastname}"/>
 	</sql:query>
+
 		
 		<br><br><br>
 		<ul class="list-group">

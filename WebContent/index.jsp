@@ -11,6 +11,7 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
+
 </head>
 <body>
  	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -48,7 +49,6 @@
       </div>
     </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
       	<c:if test='${not empty current_user}'>
@@ -61,38 +61,52 @@
       </div>
     </div>
 
+     
+		<div class="col-md-4">
+          <h2>Authors</h2>
+        <form method= "post" action= "basicauthorsearch.jsp">
+          <button type="submit" class="btn btn-default" value="a" name="search">Search</button>
+    	</form>
+    	<form method= "post" action= "browse.jsp">
+    		<button type="submit" class="btn btn-default" value="a" name="browse">Browse</button>
+    	</form>
+    	</div>
     
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Author</h2>
-          <p>Click here to search for authors. </p>
-          <p><a class="btn btn-default" href="./basicauthorsearch.jsp" role="button">More... &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
+    	
+	
+	<div class="col-md-4">
           <h2>Publications</h2>
-          <p>Click here to search for publications. </p>
-          <p><a class="btn btn-default" href="#" role="button">More... &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Trials</h2>
-          <p>Click here to search for trails. </p>
-          <p><a class="btn btn-default" href="#" role="button">More... &raquo;</a></p>
-        </div>
-      </div>
+        <form method= "post" action= "basicauthorsearch.jsp">
+          <button type="submit" class="btn btn-default" value="p" name="search">Search</button>
+        </form>
+        <form method= "post" action= "browse.jsp">
+    		<button type="submit" class="btn btn-default" value="p" name="browse">Browse</button>
+    	</form>
+	</div>
+	
+	
+    <div class="col-md-4">
+           <h2>Trials</h2>
+        <form method= "post" action= "basicauthorsearch.jsp">	
+          <button type="submit" class="btn btn-default" value="t" name="search">Search</button>
+        </form>  
+        <form method= "post" action= "browse.jsp">
+    		<button type="submit" class="btn btn-default" value="t" name="browse">Browse</button>
+    	</form>
+    </div>
+
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+  <div class="container">
+    <p class="text-muted navbar-right">&copy; Beta@UIowa 2015</p>
+  </div>
+</nav>
     
-      <hr>
-
-      <footer>
-        <p>&copy; Beta@UIowa 2015</p>
-      </footer>
-    </div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
