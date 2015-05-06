@@ -61,8 +61,9 @@
       </div>
     </div>
 
-     
-		<div class="col-md-4">
+    <div class="container">
+    <div class="row">
+	<div class="col-md-4">
           <h2>Authors</h2>
         <form method= "post" action= "basicauthorsearch.jsp">
           <button type="submit" class="btn btn-default" value="a" name="search">Search</button>
@@ -94,16 +95,17 @@
     		<button type="submit" class="btn btn-default" value="t" name="browse">Browse</button>
     	</form>
     </div>
+    </div>
+	</div>
 
 
-
-
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <p class="text-muted navbar-right">&copy; Beta@UIowa 2015</p>
-  </div>
-</nav>
+	
+	
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+	  <div class="container">
+	    <p class="text-muted navbar-right">&copy; Beta@UIowa 2015</p>
+	  </div>
+	</nav>
     
 
 

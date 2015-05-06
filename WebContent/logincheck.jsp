@@ -27,6 +27,8 @@
 	    			+ username + "';");
 	    	if(rs_info.next()) {
 	    		session.setAttribute("name", rs_info.getString(1) + ", " + rs_info.getString(2));
+	    		session.setAttribute("first_name", rs_info.getString(2));
+	    		session.setAttribute("last_name", rs_info.getString(1));
 	    	}
 	    	
 	    	

@@ -36,5 +36,10 @@
   		<artifactId>postgresql</artifactId>
   		<version>9.2-1004-jdbc4</version>
   	</dependency>
+  	<dependency>
+  		<groupId>org.json</groupId>
+  		<artifactId>json</artifactId>
+  		<version>20141113</version>
+  	</dependency>
   </dependencies>
 </project>

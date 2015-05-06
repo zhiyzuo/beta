@@ -11,6 +11,9 @@
 	<% 
 		session.removeAttribute("username"); 
 		session.removeAttribute("password"); 
+		session.removeAttribute("name");
+		session.removeAttribute("first_name"); 
+		session.removeAttribute("last_name"); 
 		session.invalidate(); 
 	%> 
 	<h1 align="center">Logout was done successfully.</h1> 
