@@ -1,3 +1,6 @@
-target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
-target/m2e-wtp/web-resources/META-INF/maven/beta/beta/pom.properties
 pom.xml
+target/*
+WebContent/META-INF/*
+WebContent/WEBINF/*
+build/*
+src/*
