@@ -1,6 +1,6 @@
 pom.xml
-target/*
-WebContent/META-INF/*
-WebContent/WEBINF/*
-build/*
-src/*
+target/
+WebContent/META-INF/
+WebContent/WEBINF/
+build/
+src/
