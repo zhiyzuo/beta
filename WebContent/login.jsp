@@ -14,6 +14,9 @@
 
 </head>
 <body>
+
+	<%@ include file="navbar_search.jsp" %>
+	<br><br>
     <div class="container">
 
       <form class="form-signin" action="./logincheck.jsp"  method="post">
@@ -27,7 +30,11 @@
 
     </div> <!-- /container -->
     
+    <%@ include file="navbar_footer.jsp" %>
     
+    <script type="text/javascript">
+    	document.getElementById("nav_login").setAttribute("class", "active");
+    </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

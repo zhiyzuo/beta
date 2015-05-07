@@ -103,7 +103,7 @@
 	 <br><br><br>
 	 
 	 <div class="container">
-	 	<h2>Results (up to 1000 entries)</h2>
+	 	<h2>Results (limited to 1000 entries)</h2>
 	 </div>
 
 	<br><br>

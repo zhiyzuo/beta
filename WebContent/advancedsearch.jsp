@@ -15,23 +15,8 @@
 </head>
 <body>
 	
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-        	<div class="navbar-header">
-          	<ul class="nav nav-tabs">
-  			<li role="presentation"><a href="index.jsp">Home</a></li>
-  			<li role="presentation"><a href="basicsearch.jsp?search=${param.search}">Basic Search</a></li>
-  			<li role="presentation" class="active"><a href="advancedsearch.jsp?search=${param.search}">Advanced Search</a></li>
-  			<li role="presentation"><a href="browse.jsp">Browse</a>
-  			
-  			<c:set var="current_user" value='<%=session.getAttribute("username") %>'/>
-	        <c:if test="${empty current_user}">
-  				<li role="presentation"><a href="login.jsp">Login</a></li>
-  			</c:if>
-  			</ul>
-			</div>
-		</div>
-	</nav>
+	<%-- <c:import url=”./navbar_search.jsp”/> --%>
+	<%@ include file="navbar_search.jsp" %>
 	
 	<c:if test="${param.search eq 'p'}">
 	<br><br><br><br><br>
@@ -88,14 +73,88 @@
 	</div>
 	</c:if>
 
+	<c:if test="${param.search eq 'a'}">
+	<br><br><br><br><br>
+	<div class="container">
+		<h2 align="center" style="margin-bottom:20px">Author Advanced Search</h2>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<form action="advancedsearch_p.jsp?pmid=${param.pmid}&title=${param.title}&issn=${param.issn}&volume=${param.volume}&issue=${param.issue}&pub_season=${param.pub_season}&pub_year=${param.pub_year}">	
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1">Last name</span>
+					  <input type="text" name="last_name" class="form-control" aria-describedby="basic-addon1">
+					</div>
+					<br>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1">First name</span>
+					  <input type="text" name="first_name" class="form-control" aria-describedby="basic-addon1">
+					</div>
+					<br>
+					<div align="center">
+						<button class="btn btn-info btn-lg" type="submit">
+	                           Search <i class="glyphicon glyphicon-search"></i>
+	                    </button>
+                    </div>
+				</form>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+	</c:if>
+	
+	<c:if test="${param.search eq 't'}">
+	<br><br><br><br><br>
+	<div class="container">
+		<h2 align="center" style="margin-bottom:20px">Trial Advanced Search</h2>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<form action="advancedsearch_t.jsp?study_id=${param.org_study_id}&nct_id=${param.nct_id}&brief_title=${param.brief_title}&source=${param.source}&study_type=${param.study_type}">	
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1">Study ID</span>
+					  <input type="text" name="org_study_id" class="form-control" aria-describedby="basic-addon1">
+					</div>
+					<br>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1">NCT ID</span>
+					  <input type="text" name="nct_id" class="form-control" aria-describedby="basic-addon1">
+					</div>
+					<br>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1">Title</span>
+					  <input type="text" name="brief_title" class="form-control" aria-describedby="basic-addon1">
+					</div>
+					<br>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1">Source</span>
+					  <input type="text" name="source" class="form-control" aria-describedby="basic-addon1">
+					</div>
+					<br>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1">Type</span>
+					  <input type="text" name="study_type" class="form-control" aria-describedby="basic-addon1">
+					</div>
+					<br>
+					<div align="center">
+						<button class="btn btn-info btn-lg" type="submit">
+	                           Search <i class="glyphicon glyphicon-search"></i>
+	                    </button>
+                    </div>
+				</form>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+	</c:if>
 
 		
-	<nav class="navbar navbar-default navbar-fixed-bottom">
-	  <div class="container">
-	    <p class="text-muted navbar-right">&copy; Beta@UIowa 2015</p>
-	  </div>
-	</nav>
+	<%@ include file="navbar_footer.jsp" %>
 
+
+	<script type="text/javascript">
+    	document.getElementById("nav_advanced").setAttribute("class", "active");
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
