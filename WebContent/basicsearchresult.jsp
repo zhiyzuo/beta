@@ -24,8 +24,8 @@
         	<div class="navbar-header">
           	<ul class="nav nav-tabs">
   			<li role="presentation"><a href="index.jsp">Home</a></li>
-  			<li role="presentation"><a href="basicauthorsearch.jsp">Basic Search</a></li>
-  			<li role="presentation"><a href="advancedauthorsearch.jsp">Advanced Search</a></li>
+  			<li role="presentation"><a href="basicsearch.jsp?search={$param.search}">Basic Search</a></li>
+  			<li role="presentation"><a href="advancedsearch.jsp?search={$param.search}">Advanced Search</a></li>
   			<li role="presentation"><a href="browse.jsp">Browse</a>
   			<li role="presentation"><a href="login.jsp">Login</a></li>
   			
@@ -48,16 +48,18 @@
 
 		
 		<br><br><br>
-		<ul class="list-group">
-		<li class= "list-group-item"> <h4>Articles Written By ${param.first} ${param.lastname}:</h4></li>
-		<c:forEach items="${title.rows}" var="result_row">
-		<li class= "list-group-item"> 
-			<a href="http://www.ncbi.nlm.nih.gov/pubmed/<c:out value="${result_row.pmid}"/>">
-				<c:out value="${result_row.title}"/><br>
-			</a> </li>
-		</c:forEach>
-		</ul>
-
+		<div class="container">
+			<ul class="list-group">
+				<li class= "list-group-item"> <h4>Articles Written By ${param.first} ${param.lastname}:</h4></li>
+				<c:forEach items="${title.rows}" var="result_row">
+					<li class= "list-group-item"> 
+						<a href="http://www.ncbi.nlm.nih.gov/pubmed/<c:out value="${result_row.pmid}"/>">
+							<c:out value="${result_row.title}"/><br>
+						</a> 
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
 	
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

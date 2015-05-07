@@ -8,11 +8,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Basic Author Search</title>
+<title>Basic Search</title>
 
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -27,8 +25,8 @@
         	<div class="navbar-header">
           	<ul class="nav nav-tabs">
   			<li role="presentation"><a href="index.jsp">Home</a></li>
-  			<li role="presentation" class="active"><a href="basicauthorsearch.jsp">Basic Search</a></li>
-  			<li role="presentation"><a href="advancedauthorsearch.jsp">Advanced Search</a></li>
+  			<li role="presentation" class="active"><a href="basicsearch.jsp">Basic Search</a></li>
+  			<li role="presentation"><a href="advancedsearch.jsp?search=${param.search}">Advanced Search</a></li>
   			<li role="presentation"><a href="browse.jsp">Browse</a>
   			
   			<c:set var="current_user" value='<%=session.getAttribute("username") %>'/>
@@ -51,7 +49,7 @@
 
 <c:if test="${param.search eq 'a'}">	
 <br><br><br><br><br>
-<form action="basicauthorsearch.jsp">		
+<form action="basicsearch.jsp?search=a">		
 <div class="container">
 	<div class="row">
         <div class="col-md-6">
@@ -83,29 +81,29 @@
 			<sql:param value="${author.rowsByIndex[0][0]}"/>
 </sql:query>
 
-
-		
-			<div class="row">
-			<br><br>
+	<br><br><br><br><br>
+	<div class="container">
+		<div class="row">
 			<ul class="list-group">
-			<li class= "list-group-item">Author:</li>
-			<c:forEach items="${author.rows}" var="result_row">
-				<li class= "list-group-item">
-					<a href="basicauthorsearchresults.jsp?first=<c:out value="${result_row.first}"/>&lastname=<c:out value="${author2.rowsByIndex[0][0]}"/>">
-						<c:out value="${result_row.first}"/>
-						&nbsp;
-						<c:out value="${author2.rowsByIndex[0][0]}"/>
-					</a></li>
-			</c:forEach>
+				<li class= "list-group-item">Author:</li>
+				<c:forEach items="${author.rows}" var="result_row">
+					<li class= "list-group-item">
+						<a href="basicsearchresult.jsp?first=<c:out value="${result_row.first}"/>&lastname=<c:out value="${author2.rowsByIndex[0][0]}"/>">
+							<c:out value="${result_row.first}"/>
+							&nbsp;
+							<c:out value="${author2.rowsByIndex[0][0]}"/>
+						</a></li>
+				</c:forEach>
 			</ul>
-			</div>
+		</div>
+	</div>
 			
 </c:if>
 
 <c:if test="${param.search eq 'p'}">
 
 <br><br><br><br><br>
-<form action="basicauthorsearch.jsp">		
+<form action="basicsearch.jsp?search=p">		
 <div class="container">
 	<div class="row">
         <div class="col-md-6">
