@@ -71,23 +71,8 @@
 	 		con.close();
 	 	}
 	 %> 
-	 <nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-        	<div class="navbar-header">
-          	<ul class="nav nav-tabs">
-  			<li role="presentation"><a href="index.jsp">Home</a></li>
-  			<li role="presentation"><a href="basicsearch.jsp?search=t">Basic Search</a></li>
-  			<li role="presentation" class="active"><a href="advancedsearch.jsp?search=t">Advanced Search</a></li>
-  			<li role="presentation"><a href="browse.jsp">Browse</a>
-  			
-  			<c:set var="current_user" value='<%=session.getAttribute("username") %>'/>
-	        <c:if test="${empty current_user}">
-  				<li role="presentation"><a href="login.jsp">Login</a></li>
-  			</c:if>
-  			</ul>
-			</div>
-		</div>
-	</nav>
+	 
+	 <%@ include file="navbar_search.jsp" %>
 	 	 
 	 <br><br><br>
 	 
@@ -123,11 +108,7 @@
 	    </table>
 	 </div>
 	 
-	 <nav class="navbar navbar-default navbar-fixed-bottom">
-	  <div class="container">
-	    <p class="text-muted navbar-right">&copy; Beta@UIowa 2015</p>
-	  </div>
-	</nav>
+	 <%@ include file="navbar_footer.jsp" %>
 	 
 	 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

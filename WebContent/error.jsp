@@ -19,6 +19,8 @@
 			seconds
 		</center>
 	</form>
+	
+	<%@ include file="navbar_footer.jsp" %>
 
 	<script>
 	

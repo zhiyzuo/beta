@@ -19,20 +19,7 @@
     	    url="jdbc:postgresql://neuromancer.icts.uiowa.edu/institutional_repository"
         	user="demo" password="demo"/>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-        	<div class="navbar-header">
-          	<ul class="nav nav-tabs">
-  			<li role="presentation"><a href="index.jsp">Home</a></li>
-  			<li role="presentation"><a href="basicsearch.jsp?search={$param.search}">Basic Search</a></li>
-  			<li role="presentation"><a href="advancedsearch.jsp?search={$param.search}">Advanced Search</a></li>
-  			<li role="presentation"><a href="browse.jsp">Browse</a>
-  			<li role="presentation"><a href="login.jsp">Login</a></li>
-  			
-			</ul>
-			</div>
-		</div>
-	</nav>
+	<%@ include file="navbar_search.jsp" %>
 
         
 	<sql:query var="title" dataSource="${jdbc}">
@@ -60,6 +47,8 @@
 				</c:forEach>
 			</ul>
 		</div>
+		
+	<%@ include file="navbar_footer.jsp" %>
 	
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

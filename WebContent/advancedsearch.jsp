@@ -147,7 +147,8 @@
 		</div>
 	</div>
 	</c:if>
-
+	
+	<br><br><br>
 		
 	<%@ include file="navbar_footer.jsp" %>
 
