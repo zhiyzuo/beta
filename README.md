@@ -4,11 +4,17 @@
 
 <h3>Update</h3>
 
-<p>I have updated the user tables and realize the functionality of login and logout. Please feel free to try it out: </p>
+<div>
+<p>Now the project has come to an end and the most important things we have to deal with are: </p>
+<ul>
+<li>D3 visualization</li>
+<li>CSS for logout and error page</li>
+<li>List of authors/publications/trials by alphabetical order (or any other oder)</li>
+</ul>
+</div>
+
+<p>Please feel free to try it out: </p>
 <blockquote> username: <code>1</code> and password: <code>demo</code> </blockquote>
-
-<p>However, before you can push this back here, you have to let me add you into the collaborators' list. Just <a href="mailto:zhiya-zuo@uiowa.edu?Subject=Github%20Beta%20Issues" target="_top">send</a> me an email.</p>
-
 
 <h3>Using terminal</h3>
 <li>
