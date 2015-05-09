@@ -8,15 +8,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Basic Author Search</title>
+<title>Browse</title>
 
 <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-
-
 </head>
 <body>
+
+<div class="spinner">
+    Loading...
+</div>
 
 <sql:setDataSource var="jdbc" driver="org.postgresql.Driver" 
     	    url="jdbc:postgresql://neuromancer.icts.uiowa.edu/institutional_repository"
@@ -63,16 +63,9 @@
 
 
 <sql:query var="publist" dataSource="${jdbc}">
-			SELECT article.pmid as pmid, 
-			title,
-			author.last_name as last_name
-			FROM medline.author
-			INNER JOIN beta.user_info
-			ON author.last_name = user_info.last_name
-			AND author.initials = user_info.first_name
-			INNER JOIN medline.article
-			ON author.pmid = article.pmid
-			ORDER BY last_name, pmid;
+			SELECT pmid, title
+			FROM medline.article
+			ORDER BY title, pmid limit 1000;
 </sql:query>
 
 
@@ -83,9 +76,8 @@
 			<h4 class="list-group-item-heading">Publications</h4>
   				<c:forEach items="${publist.rows}" var="result_row">
   					<li class="list-group-item">
-  						Author: <c:out value="${result_row.last_name}"/>
-  						Title: <a href="http://www.ncbi.nlm.nih.gov/pubmed/<c:out value="${result_row.pmid}"/>">
-  						<c:out value="${result_row.title}"/>
+  						<a href="http://www.ncbi.nlm.nih.gov/pubmed/${result_row.pmid}">
+  							${result_row.title}
   						</a>
   					</li>
   				</c:forEach>
@@ -131,7 +123,7 @@
     
 
 <%@ include file="navbar_footer.jsp" %>
-    
+
     <script type="text/javascript">
     	document.getElementById("nav_browse").setAttribute("class", "active");
     </script>

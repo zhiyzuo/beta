@@ -26,7 +26,7 @@
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
-				<form action="advancedsearch_p.jsp?pmid=${param.pmid}&title=${param.title}&issn=${param.issn}&volume=${param.volume}&issue=${param.issue}&pub_season=${param.pub_season}&pub_year=${param.pub_year}">	
+				<form action="advancedsearch_p.jsp?search=p&pmid=${param.pmid}&title=${param.title}&issn=${param.issn}&volume=${param.volume}&issue=${param.issue}&pub_season=${param.pub_season}&pub_year=${param.pub_year}">	
 					<div class="input-group">
 					  <span class="input-group-addon" id="basic-addon1">PMID</span>
 					  <input type="text" name="pmid" class="form-control" aria-describedby="basic-addon1">
@@ -81,7 +81,7 @@
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
-				<form action="advancedsearch_p.jsp?pmid=${param.pmid}&title=${param.title}&issn=${param.issn}&volume=${param.volume}&issue=${param.issue}&pub_season=${param.pub_season}&pub_year=${param.pub_year}">	
+				<form action="advancedsearch_a.jsp?search=a&first=${param.fore_name}&last=${param.last_name}">	
 					<div class="input-group">
 					  <span class="input-group-addon" id="basic-addon1">Last name</span>
 					  <input type="text" name="last_name" class="form-control" aria-describedby="basic-addon1">
@@ -89,7 +89,7 @@
 					<br>
 					<div class="input-group">
 					  <span class="input-group-addon" id="basic-addon1">First name</span>
-					  <input type="text" name="first_name" class="form-control" aria-describedby="basic-addon1">
+					  <input type="text" name="fore_name" class="form-control" aria-describedby="basic-addon1">
 					</div>
 					<br>
 					<div align="center">
@@ -111,7 +111,7 @@
 		<div class="row">
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
-				<form action="advancedsearch_t.jsp?study_id=${param.org_study_id}&nct_id=${param.nct_id}&brief_title=${param.brief_title}&source=${param.source}&study_type=${param.study_type}">	
+				<form action="advancedsearch_t.jsp?search=t&study_id=${param.org_study_id}&nct_id=${param.nct_id}&brief_title=${param.brief_title}&source=${param.source}&study_type=${param.study_type}">	
 					<div class="input-group">
 					  <span class="input-group-addon" id="basic-addon1">Study ID</span>
 					  <input type="text" name="org_study_id" class="form-control" aria-describedby="basic-addon1">

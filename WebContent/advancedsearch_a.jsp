@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-<title>Advanced Publication Search Results</title> 
+<title>Advanced Author Search Results</title> 
 
 </head> 
 <body>
@@ -26,32 +26,20 @@
 		ResultSet rs;
 		
 		//TODO: deal with error/exception
-	 	String query = "select row_number() over(), medline.article.pmid, medline.article.title from medline.journal, medline.article where " +
-			   		   "(medline.article.pmid = medline.journal.pmid) and ";
+	 	String query = "select row_number() over(), fore_name as first_name, last_name from medline.author where ";
 
-	 	String[] textStrings = {"title", "issn", "volume", "issue", "pub_season"};
+	 	String[] textStrings = {"fore_name", "last_name"};
 	 	for(int i = 0; i < textStrings.length; i++) {
 	 		String this_key = request.getParameter(textStrings[i]); 
 	 		if(this_key.length() > 0) {
-	 			if(textStrings[i].equals("title")){
-	 				query += "medline.article.";
-	 			}
 	 			query += textStrings[i] + " LIKE '%" + this_key + "%' and";
 	 		}
 	 	}
 	 	
 	 	query = query.substring(0, query.length()-3);
-	 	
-	 	// integer type
-	 	String pmid = request.getParameter("pmid");
-	 	String pub_year = request.getParameter("pub_year");
-	 	
-		
-	 	if(pmid.length() > 0)
-	 		query = query + " and cast(pmid as text) like '%" + pmid + "%'";
-	 	if(pub_year.length() > 0)
-	 		query = query + " and cast(pub_year as text) like '%" + pub_year + "%'";
 	 	query += " limit 1000;";
+	 	
+/* 	 	session.setAttribute("query", query); */
 
 	 	try {
 	 		rs = st.executeQuery(query);
@@ -60,23 +48,24 @@
 		    while (rs.next()) {
 		    	try {
 		    		hashmap.put("row", rs.getString(1));
-		    		hashmap.put("pmid", rs.getString(2));
-		    		hashmap.put("title", rs.getString(3));
+		    		hashmap.put("first_name", rs.getString(2));
+		    		hashmap.put("last_name", rs.getString(3));
 		    		list.add(hashmap);
 		    		hashmap = new HashMap();
 		    	}
 		    	catch(Exception e) {
-		    		response.sendRedirect("error.jsp");
+		    		out.println(query);
+		    		/* response.sendRedirect("error.jsp"); */
 		    	}
 			 	finally { 
 			 		con.close();
 			 	}
 		 	}
 
-		    session.setAttribute("advanced_search_pub", list);
+		    session.setAttribute("advanced_search_author", list);
 	 	}catch(Exception e) {
-	 		response.sendRedirect("error.jsp");
-	 		/* out.println(query); */
+	 		/* response.sendRedirect("error.jsp"); */
+	 		out.println(query);
 	 	}
 	 	finally {
 	 		con.close();
@@ -88,29 +77,24 @@
 	 
 	 <div class="container">
 	 	<h2>Results (limited to 1000 entries)</h2>
+<%-- 	 	<h2><%=session.getAttribute("query") %></h2> --%>
 	 </div>
 
 	<br><br>
-
+	
 	 <div class="container">
 		<table class="table table-hover">
 		    <thead>
 		      <tr>
 		        <th>#</th>
-		        <th>PMID</th>
-		        <th>Title</th>
+		        <th>Name</th>
 		      </tr>
 		    </thead>
 		    <tbody>
-		    <c:forEach items='<%=session.getAttribute("advanced_search_pub") %>' var="map"> 		  
+		    <c:forEach items='<%=session.getAttribute("advanced_search_author") %>' var="map"> 		  
 		      <tr>
 		        <td>${map.row }</td>
-		        <td>${map.pmid }</td>
-		        <td>
-		        	<a href="http://www.ncbi.nlm.nih.gov/pubmed/<c:out value="${map.pmid}"/>"> 
-			  			<c:out value="${map.title}"/>
-					</a> 
-				</td>
+		        <td>${map.first_name } ${map.last_name }</td>
 		      </tr>
 		      </c:forEach>
 		
