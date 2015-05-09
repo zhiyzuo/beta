@@ -31,26 +31,28 @@
 <c:if test="${param.search eq 'a'}">
 
 <sql:query var="authorlist" dataSource="${jdbc}">
-			select first_name as first, 
+			select id, first_name as first, 
 			last_name as last
 			from beta.user_info
 			order by last_name;
 </sql:query>	
 
 <div class="container">
-<div class="row">
-<br><br>
-<ul class="list-group">
-<h4 class="list-group-item-heading">Authors</h4>
-  <c:forEach items="${authorlist.rows}" var="result_row">
-  <li class="list-group-item">
-  <c:out value="${result_row.first}"/>
-  &nbsp;
-  <c:out value="${result_row.last}"/>
-  </c:forEach>
-  </li>
-</ul>
-</div>
+	<div class="row">
+	<br><br>
+		<ul class="list-group">
+		<h4 class="list-group-item-heading">Authors</h4>
+		  <c:forEach items="${authorlist.rows}" var="result_row">
+			  <li class="list-group-item">
+			  	<a href="./home.jsp?username=${result_row.id}">
+				  <c:out value="${result_row.first}"/>
+				  &nbsp;
+				  <c:out value="${result_row.last}"/>
+			    </a>
+			  </li>
+		  </c:forEach>
+		</ul>
+	</div>
 </div>
 
 <br><br><br><br>
@@ -131,7 +133,7 @@
 <%@ include file="navbar_footer.jsp" %>
     
     <script type="text/javascript">
-    	document.getElementById("nav_basic").setAttribute("class", "active");
+    	document.getElementById("nav_browse").setAttribute("class", "active");
     </script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

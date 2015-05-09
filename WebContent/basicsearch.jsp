@@ -53,7 +53,7 @@
 <c:if test="${not empty param.lastname}">
 
 <sql:query var="author" dataSource="${jdbc}">
-			select first_name as first
+			select id, first_name as first
 			from beta.user_info 
 			where last_name ILIKE ?
 			order by first_name;
@@ -75,7 +75,7 @@
 				<li class= "list-group-item">Author:</li>
 				<c:forEach items="${author.rows}" var="result_row">
 					<li class= "list-group-item">
-						<a href="basicsearchresult.jsp?first=<c:out value="${result_row.first}"/>&lastname=<c:out value="${author2.rowsByIndex[0][0]}"/>">
+						<a href="home.jsp?username=<c:out value="${result_row.id}"/>&lastname=<c:out value="${author2.rowsByIndex[0][0]}"/>">
 							<c:out value="${result_row.first}"/>
 							&nbsp;
 							<c:out value="${author2.rowsByIndex[0][0]}"/>

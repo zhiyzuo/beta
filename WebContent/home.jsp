@@ -1,21 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" errorPage="error.jsp"%>
+    pageEncoding="UTF-8"%>
 <%@ page import ="java.sql.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title><%=session.getAttribute("name")%>'s Home Page</title>
+<title>Researcher Home Page</title>
 
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 <script type="text/javascript">
 
-function resetForm($form) {
-    $form.find('input:text, textarea').not("input[name='username']").val('');
-}
+	function resetForm($form) {
+	    $form.find('input:text, textarea').not("input[name='username']").val('');
+	}
 
 </script>
 
@@ -30,9 +32,17 @@ function resetForm($form) {
 		Statement st = con.createStatement();
 		ResultSet rs;
 		
+		Object username = session.getAttribute("username");
+		
+		if(username == null) {
+			username = request.getParameter("username");
+		}
+		
 		rs = st.executeQuery("select * from beta.user_info where id = '" 
-			+ session.getAttribute("username") + "';");
+				+ username + "';");
+		
 		while(rs.next()) {	
+			session.setAttribute("this_name", rs.getString(2) + " " + rs.getString(3));
 			session.setAttribute("dept", rs.getString(4));
 			session.setAttribute("phone", rs.getString(5));
 			session.setAttribute("email", rs.getString(6));
@@ -43,26 +53,74 @@ function resetForm($form) {
 		con.close();
 	%> 
 	
-	<c:set var="guest" value='${session.getAttribute("guest")}'></c:set>
-
+	
+	
 	    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Welcome: <%=session.getAttribute("name")%></h1>	
+      
+        <h1><%=session.getAttribute("this_name") %></h1>
+        <c:set var="if_researcher" value='<%=session.getAttribute("username")%>'></c:set>
+        
 		<!-- Button trigger modal -->
-		<c:if test="empty ${guest }">
-		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-	  		View profile
-		</button>
+		<c:if test="${not empty if_researcher }">
+			<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+		  		View profile
+			</button>
 		</c:if>
-		<a class="btn btn-success btn-sm"  href=<%="index.jsp?username=" + session.getAttribute("username") %>>
-			Home
-		</a>
-		<a class="btn btn-danger btn-sm"  href="logout.jsp" %>
-			Logout
-		</a>
+		
+		<c:if test="${not empty if_researcher }">
+			<a class="btn btn-success btn-sm"  href=<%="index.jsp?username=" + session.getAttribute("username") %>>
+				Home
+			</a>
+		</c:if>
+		
+		<c:if test="${empty if_researcher }">
+			<a class="btn btn-success btn-sm"  href="index.jsp?">
+				Home
+			</a>
+		</c:if>
+		
+		<c:if test="${not empty if_researcher }">
+			<a class="btn btn-danger btn-sm"  href="logout.jsp">
+				Logout
+			</a>
+		</c:if>
+		
       </div>
     </div>
+    
+    
+    
+    <sql:setDataSource var="jdbc" driver="org.postgresql.Driver" 
+    	    url="jdbc:postgresql://neuromancer.icts.uiowa.edu/institutional_repository"
+        	user="zhiyzuo" password="gljfeef"/>
+     
+     <!-- Publications -->   	
+	<sql:query var="pub" dataSource="${jdbc}">
+		select title, article.pmid
+		from medline.article where article.pmid in 
+		(select pmid from medline.author where fore_name = 
+		(select first_name from beta.user_info where id = CAST(? AS INTEGER)) and last_name =
+		(select last_name from beta.user_info where id = CAST(? AS INTEGER)));
+		<sql:param value="${param.username}"/>
+		<sql:param value="${param.username}"/>
+	</sql:query>
+		
+	<div class="container">
+		<ul class="list-group">
+			<li class= "list-group-item"> <h4>Articles Written</h4></li>
+			<c:forEach items="${pub.rows}" var="result_row">
+				<li class= "list-group-item"> 
+					<a href="http://www.ncbi.nlm.nih.gov/pubmed/<c:out value="${result_row.pmid}"/>">
+						<c:out value="${result_row.title}"/><br>
+					</a> 
+				</li>
+			</c:forEach>
+		</ul>
+	</div> 
+	
+	<br><br><br>
 	
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
