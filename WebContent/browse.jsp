@@ -59,6 +59,7 @@
 
 <c:if test="${param.search eq 'p'}">
 
+
 <sql:query var="publist" dataSource="${jdbc}">
 			SELECT article.pmid as pmid, 
 			title,
@@ -71,7 +72,6 @@
 			ON author.pmid = article.pmid
 			ORDER BY last_name, pmid;
 </sql:query>
-
 
 
 <div class="container">

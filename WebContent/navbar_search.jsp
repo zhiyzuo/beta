@@ -1,4 +1,9 @@
 
+
+
+
+
+
 	<c:set var="current_user" value='<%=session.getAttribute("username") %>'></c:set>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
