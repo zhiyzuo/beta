@@ -1,4 +1,9 @@
 
+
+
+
+
+
 	<c:set var="current_user" value='<%=session.getAttribute("username") %>'></c:set>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
@@ -12,7 +17,7 @@
   			</c:if>
   			<li role="presentation" id="nav_basic"><a href="basicsearch.jsp?search=${param.search}">Basic Search</a></li>
   			<li role="presentation" id="nav_advanced"><a href="advancedsearch.jsp?search=${param.search}">Advanced Search</a></li>
-  			<li role="presentation" id="nav_browse"><a href="browse.jsp">Browse</a>
+  			<li role="presentation" id="nav_browse"><a href="browse.jsp?search=${param.search}">Browse</a></li>
 	        <c:if test="${empty current_user}">
   				<li role="presentation" id="nav_login"><a href="login.jsp">Login</a></li>
   			</c:if>

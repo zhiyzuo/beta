@@ -69,36 +69,24 @@
     <div class="container">
     <div class="row">
 	<div class="col-md-4">
-          <h2>Authors</h2>
         <form method= "post" action= "basicsearch.jsp?search=a">
-          <button type="submit" class="btn btn-default" value="a" name="search">Search</button>
-    	</form>
-    	<form method= "post" action= "browse.jsp">
-    		<button type="submit" class="btn btn-default" value="a" name="browse">Browse</button>
+          <button type="submit" class="btn btn-default" value="a" name="search"><h2>Authors</h2></button>
     	</form>
     	</div>
     
     	
 	
 	<div class="col-md-4">
-          <h2>Publications</h2>
         <form method= "post" action= "basicsearch.jsp?search=p">
-          <button type="submit" class="btn btn-default" value="p" name="search">Search</button>
+          <button type="submit" class="btn btn-default" value="p" name="search"><h2>Publications</h2></button>
         </form>
-        <form method= "post" action= "browse.jsp">
-    		<button type="submit" class="btn btn-default" value="p" name="browse">Browse</button>
-    	</form>
 	</div>
 	
 	
     <div class="col-md-4">
-           <h2>Trials</h2>
         <form method= "post" action= "basicsearch.jsp?search=t">	
-          <button type="submit" class="btn btn-default" value="t" name="search">Search</button>
+          <button type="submit" class="btn btn-default" value="t" name="search"><h2>Trials</h2></button>
         </form>  
-        <form method= "post" action= "browse.jsp">
-    		<button type="submit" class="btn btn-default" value="t" name="browse">Browse</button>
-    	</form>
     </div>
     </div>
 	</div>
