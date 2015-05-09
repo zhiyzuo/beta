@@ -34,6 +34,7 @@
 	    	
 	        session.setAttribute("username", username);
 	        session.setAttribute("password", password);
+	        session.removeAttribute("guest");
 	        response.sendRedirect("index.jsp?username=" + username);
 	        con.close();
 	    } 

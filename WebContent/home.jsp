@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" errorPage="error.jsp"%>
 <%@ page import ="java.sql.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,15 +42,19 @@ function resetForm($form) {
 		
 		con.close();
 	%> 
+	
+	<c:set var="guest" value='${session.getAttribute("guest")}'></c:set>
 
 	    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
         <h1>Welcome: <%=session.getAttribute("name")%></h1>	
 		<!-- Button trigger modal -->
+		<c:if test="empty ${guest }">
 		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
 	  		View profile
 		</button>
+		</c:if>
 		<a class="btn btn-success btn-sm"  href=<%="index.jsp?username=" + session.getAttribute("username") %>>
 			Home
 		</a>
