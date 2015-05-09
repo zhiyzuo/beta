@@ -1,6 +1,6 @@
 <%@page import="org.w3c.dom.css.RGBColor"%>
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-    pageEncoding="US-ASCII"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import ="java.sql.*" %>
 <%@ page import="java.util.*" %>
 <%@page import="org.json.simple.*"%>
