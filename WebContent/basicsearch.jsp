@@ -22,16 +22,12 @@
         	
 	<%@ include file="navbar_search.jsp" %>
 
- <sql:query var="author" dataSource="${jdbc}">
-			select first_name as first
-			from beta.user_info 
-			where last_name ILIKE ?
-			order by first_name;
-			<sql:param value="%${param.lastname}%"/>
-</sql:query>
 
 
-<c:if test="${param.search eq 'a'}">	
+<c:if test="${param.search eq 'a'}">
+
+
+	
 <br><br><br><br><br>
 <form action="basicsearch.jsp?search=a">		
 <div class="container">
@@ -56,6 +52,13 @@
 
 <c:if test="${not empty param.lastname}">
 
+<sql:query var="author" dataSource="${jdbc}">
+			select first_name as first
+			from beta.user_info 
+			where last_name ILIKE ?
+			order by first_name;
+			<sql:param value="%${param.lastname}%"/>
+</sql:query>
 
 <sql:query var="author2" dataSource="${jdbc}">
 			select last_name as last
@@ -84,7 +87,10 @@
 			
 </c:if>
 
+
+
 <c:if test="${param.search eq 'p'}">
+
 
 <br><br><br><br><br>
 <form action="basicsearch.jsp?search=p">		
@@ -106,6 +112,116 @@
 	</div>
 </div>
 </form>
+</c:if>
+
+<c:if test="${not empty param.pubname}">	
+
+<sql:query var="pub" dataSource="${jdbc}">
+			SELECT subquery.title, 
+			subquery.pmid as pmid,
+			subquery.last_name
+			FROM(
+				SELECT article.pmid as pmid,
+				title,  
+				author.last_name as last_name
+				FROM medline.author
+				INNER JOIN beta.user_info
+				ON medline.author.last_name = user_info.last_name
+				AND author.initials = user_info.first_name
+				INNER JOIN medline.article
+				ON author.pmid = article.pmid
+				GROUP BY article.pmid, author.last_name, title) as subquery
+			WHERE title ILIKE ?
+			ORDER BY subquery.pmid;
+			<sql:param value="%${param.pubname}%"/>			
+</sql:query>	
+
+<br><br><br><br><br>
+	<div class="container">
+		<div class="row">
+			<ul class="list-group">
+				<li class= "list-group-item">Publication Title:</li>
+				<c:forEach items="${pub.rows}" var="result_row">
+					<li class= "list-group-item">
+							<c:out value="${result_row.pmid}"/>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
+
+
+
+</c:if>
+
+	
+
+<c:if test="${param.search eq 't'}">
+
+
+<br><br><br><br><br>
+<form action="basicsearch.jsp?search=p">		
+<div class="container">
+	<div class="row">
+        <div class="col-md-6">
+    		<h2>Trial Keyword</h2>
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" name="keyword" placeholder="keyword" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+</form>
+</c:if>
+
+<c:if test="${not empty param.keyword}">	
+
+<sql:query var="trial" dataSource="${jdbc}">
+			SELECT subquery.textblock, 
+			subquery.keyword,
+			subquery.id
+			FROM(
+				SELECT keyword.keyword as keyword,
+				textblock,
+				overall_official.id as id 
+				FROM clinical_trials.overall_official
+				INNER JOIN beta.user_info
+				ON      overall_official.last_name LIKE CONCAT(beta.user_info.last_name, '%')
+				INNER JOIN clinical_trials.brief_summary
+				ON overall_official.id = brief_summary.id
+				INNER JOIN clinical_trials.keyword
+				ON overall_official.id = keyword.id
+				GROUP BY overall_official.id, keyword, textblock) as subquery
+			WHERE keyword ILIKE ?
+			ORDER BY subquery.keyword;
+			<sql:param value="%${param.keyword}%"/>			
+</sql:query>
+
+
+<br><br><br><br><br>
+	<div class="container">
+		<div class="row">
+			<ul class="list-group">
+				<li class= "list-group-item">Trial Description:</li>
+				<c:forEach items="${trial.rows}" var="result_row">
+					<li class= "list-group-item">
+							<c:out value="${result_row.id}"/>
+							<c:out value="${result_row.textblock}"/>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
+
+
+
 </c:if>
 
 
