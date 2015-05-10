@@ -1,9 +1,13 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page import="org.w3c.dom.css.RGBColor"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="org.apache.catalina.util.Enumerator"%>
-<%@page import="java.util.*"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+<%@ page import ="java.sql.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="org.json.simple.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -65,36 +69,39 @@
       </div>
     </div>
 
-    <div class="container">
-    <div class="row">
-	<div class="col-md-4">
-        <form method= "post" action= "basicsearch.jsp?search=a">
-          <button type="submit" class="btn btn-default" value="a" name="search"><h2>Authors</h2></button>
-    	</form>
-    	</div>
-    
-    	
-	
-	<div class="col-md-4">
-        <form method= "post" action= "basicsearch.jsp?search=p">
-          <button type="submit" class="btn btn-default" value="p" name="search"><h2>Publications</h2></button>
-        </form>
-	</div>
-	
-	
-    <div class="col-md-4">
-        <form method= "post" action= "basicsearch.jsp?search=t">	
-          <button type="submit" class="btn btn-default" value="t" name="search"><h2>Trials</h2></button>
-        </form>  
-    </div>
-    </div>
+    <div class="container" align="center">
+	    <div class="row">
+			<div class="col-md-4">
+		        <form method= "post" action= "basicsearch.jsp?search=a">
+		          <button type="submit" class="btn btn-info" value="a" name="search"><h2>Authors</h2></button>
+		    	</form>
+		   	</div>
+		
+			<div class="col-md-4">
+		        <form method= "post" action= "basicsearch.jsp?search=p">
+		          <button type="submit" class="btn btn-success" value="p" name="search"><h2>Publications</h2></button>
+		        </form>
+			</div>
+		
+		    <div class="col-md-4">
+		        <form method= "post" action= "basicsearch.jsp?search=t">	
+		          <button type="submit" class="btn btn-warning" value="t" name="search"><h2>Trials</h2></button>
+		        </form>  
+		    </div>
+	    
+	    </div>
 	</div>
 
+	<br><br>
+	<div class="container" style="margin-top:50px; margin-bottom: 50px">	
+		<%@ include file="phasepiechart.jsp" %>
+	</div>
 
+	<br>
 	
-	
-	<%@ include file="navbar_footer.jsp" %>
-    
+	<div>
+		<%@ include file="navbar_footer.jsp" %>
+    </div>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
