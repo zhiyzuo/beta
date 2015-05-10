@@ -96,6 +96,12 @@
 	<div class="container" style="margin-top:50px; margin-bottom: 50px">	
 		<%@ include file="phasepiechart.jsp" %>
 	</div>
+	
+	<br><br>
+	<div class="container" style="margin-top:50px; margin-bottom: 50px">	
+		<%@ include file="uiowa_countbarchart.jsp" %>
+	</div>
+	
 
 	<br>
 	

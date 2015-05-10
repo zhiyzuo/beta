@@ -1,6 +1,6 @@
 
 	<div class="container">
-	 <div id="main" style="width:100%;height:500px"></div>
+	 <div id="piechartdiv" style="width:100%;height:500px"></div>
 	</div>
 
 	 <sql:setDataSource var="jdbc" driver="org.postgresql.Driver" 
@@ -11,7 +11,7 @@
 			select count(*), phase from clinical_trials.clinical_study where id in (select id from clinical_trials.overall_official  where affiliation = 'University of Iowa') group by phase;
 	 </sql:query>
 	 
-	 <div id="jsondiv" style="display:none">
+	 <div id="jsondiv_pie_chart" style="display:none">
 		 <json:array name="phase_count_json">
 		  <c:forEach items="${phase_count.rows}" var="row">
 		  	<json:object>
@@ -42,10 +42,10 @@
  			  ],
 		  function (ec) {
 		    //
-		    var myPie = ec.init(document.getElementById('main'));
+		    var myPie = ec.init(document.getElementById('piechartdiv'));
 		    
 		    
-		    var dataset = JSON.parse(document.getElementById("jsondiv").innerHTML.trim());
+		    var dataset = JSON.parse(document.getElementById("jsondiv_pie_chart").innerHTML.trim());
 		    //console.log(dataset);
 		    var name = [];
 		 	for (i = 0; i < dataset.length; i++) { 
@@ -56,12 +56,34 @@
 		    var option = {
 		      
 		      title : {
-		          text: 'Current Summary of Clinical Trials at UIowa',
+		          text: 'Current Summary of Clinical Trials @UIowa',
 		          x:'center'
 		      },
 		      tooltip : {
 		          trigger: 'item',
 		          formatter: "{a} <br/>{b} : {c} ({d}%)"
+		      },
+		      toolbox: {
+		          show : true,
+		          feature : {
+		              mark : {show: true,
+			            	  title : {
+			                      mark : 'Mark On',
+			                      markUndo : 'Mark Undo',
+			                      markClear : 'Mark Clear',
+			                  },  
+		              	},
+		              dataView : {show: true,
+		            	  title : 'Data View',
+		                  readOnly: false,
+		                  lang: ['Data View', 'Close', 'Refresh']
+		              	},
+		              restore : {show: true, title : 'Restore'},
+		              saveAsImage : {show: true,
+			            	  title : 'Save as',
+			                  type : 'png',
+			                  lang : ['Click to save']}
+		          		},
 		      },
 		      calculable : true,
 		      legend: {
