@@ -15,7 +15,6 @@
 </head>
 <body>
 
-	<%@ include file="navbar_search.jsp" %>
 	<br><br>
     <div class="container">
 

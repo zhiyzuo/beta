@@ -142,9 +142,11 @@
 			<ul class="list-group">
 				<li class= "list-group-item">Publication Title:</li>
 				<c:forEach items="${pub.rows}" var="result_row">
-					<li class= "list-group-item">
-							<c:out value="${result_row.pmid}"/>
-					</li>
+					<a href="http://www.ncbi.nlm.nih.gov/pubmed/${result_row.pmid}">
+						<li class= "list-group-item">
+							${result_row.title}
+						</li>
+					</a>
 				</c:forEach>
 			</ul>
 		</div>

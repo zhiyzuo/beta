@@ -1,8 +1,12 @@
+<%@ page import="org.w3c.dom.css.RGBColor"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="java.sql.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ page import="java.util.*" %>
+<%@ page import="org.json.simple.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="json" uri="http://www.atg.com/taglibs/json" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -106,6 +110,11 @@
 		<sql:param value="${param.username}"/>
 		<sql:param value="${param.username}"/>
 	</sql:query>
+		
+		
+	<div class="container">
+		<%@ include file="personbarchart.jsp" %>
+	</div>
 		
 	<div class="container">
 		<ul class="list-group">
