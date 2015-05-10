@@ -1,5 +1,5 @@
 <%@page import="javax.sound.midi.Track"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8" errorPage="error.jsp"%> 
 <%@ page import ="java.sql.*" %>
 <html>
 <head>

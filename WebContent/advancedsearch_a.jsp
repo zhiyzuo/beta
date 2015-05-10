@@ -1,5 +1,5 @@
 <%@page import="org.eclipse.jdt.internal.compiler.ast.IfStatement"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@page contentType="text/html" pageEncoding="UTF-8" errorPage="error.jsp"%> 
 <%@ page import ="java.sql.*" %>
 <%@page import="java.util.*"%>
 <%@page import="org.json.simple.*"%>
