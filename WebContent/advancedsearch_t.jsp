@@ -109,6 +109,9 @@
 	 </div>
 	 
 	 <%@ include file="navbar_footer.jsp" %>
+	 <script type="text/javascript">
+    	document.getElementById("nav_advanced").setAttribute("class", "active");
+    </script>
 	 
 	 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
