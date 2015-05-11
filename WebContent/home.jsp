@@ -121,7 +121,7 @@
 			<li class= "list-group-item"> <h4>Articles Written</h4></li>
 			<c:forEach items="${pub.rows}" var="result_row">
 				<li class= "list-group-item"> 
-					<a href="http://www.ncbi.nlm.nih.gov/pubmed/<c:out value="${result_row.pmid}"/>">
+					<a href="pub.jsp?pmid=<c:out value="${result_row.pmid}"/>">
 						<c:out value="${result_row.title}"/><br>
 					</a> 
 				</li>
