@@ -84,7 +84,7 @@
 			</div>
 		
 		    <div class="col-md-4">
-		        <form method= "post" action= "basicsearch.jsp?search=t">	
+		        <form method= "post" action= "basicsearch.jsp?search=t">
 		          <button type="submit" class="btn btn-warning" value="t" name="search"><h2>Trials</h2></button>
 		        </form>  
 		    </div>

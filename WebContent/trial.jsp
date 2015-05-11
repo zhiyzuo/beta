@@ -52,7 +52,7 @@
 
 
 
-
+<div class="container">
 <div class="page-header">
   <h1><font color=#47476B><c:out value="${trial4.rowsByIndex[0][0]}"/></font></h1><short><c:out value="${trial3.rowsByIndex[0][0]}"/></short>
 </div>
@@ -96,9 +96,9 @@
 			</ul>
 		</div>
 	</div>
+</div>
+
 <br><br>
-
-
 
 <%@ include file="navbar_footer.jsp" %>
 

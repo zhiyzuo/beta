@@ -55,7 +55,7 @@
 	</div>
 </div>
 
-<br><br><br><br>
+<br><br>
 
 </c:if>
 
@@ -68,6 +68,7 @@
 			ORDER BY title, pmid limit 1000;
 </sql:query>
 
+<div class="container">
 <table class="table">
     <thead>
         <tr>
@@ -85,8 +86,9 @@
             </c:forEach>
     </tbody>
 </table>
+</div>
+<br><br>
 
-<br><br><br><br>
 </c:if>
 
 <c:if test="${param.search eq 't'}">
@@ -103,8 +105,7 @@
 			ORDER BY id, last;
 </sql:query>
 
-<br><br>
-
+<div class="container">
 <table class="table">
     <thead>
         <tr>
@@ -124,7 +125,7 @@
             </c:forEach>
     </tbody>
 </table>
-
+</div>
 <br><br>
 
 </c:if>
