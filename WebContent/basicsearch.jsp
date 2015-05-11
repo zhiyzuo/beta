@@ -205,23 +205,24 @@
 			ORDER BY subquery.keyword;
 			<sql:param value="%${param.keyword}%"/>			
 </sql:query>
-
-
-<br><br><br><br><br>
-	<div class="container">
-		<div class="row">
-			<ul class="list-group">
-				<li class= "list-group-item">Trial Description:</li>
-				<c:forEach items="${trial.rows}" var="result_row">
-					<li class= "list-group-item">
-							<c:out value="${result_row.id}"/>
-							<c:out value="${result_row.textblock}"/>
-					</li>
-				</c:forEach>
-			</ul>
-		</div>
-	</div>
-
+<br><br><br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Trial Number</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        	<c:forEach items="${trial.rows}" var="result_row">
+        		<tr>
+            		<td><a href="trial.jsp?id=<c:out value="${result_row.id}"/>">
+            		<c:out value="${result_row.id}"/></a></td>
+            		<td><c:out value="${result_row.textblock}"/></td>
+            	</tr>
+            </c:forEach>
+    </tbody>
+</table>
 
 
 </c:if>

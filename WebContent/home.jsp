@@ -113,7 +113,7 @@
 		
 		
 	<div class="container">
-		<%@ include file="personbarchart.jsp" %>
+		<%@ include file="PersonBarchart.jsp" %>
 	</div>
 		
 	<div class="container">

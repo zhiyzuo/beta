@@ -92,32 +92,39 @@
 
 <sql:query var="triallist" dataSource="${jdbc}">
 			SELECT textblock,
+			overall_official.last_name as last, 
 			overall_official.id as id 
 			FROM clinical_trials.overall_official
 			INNER JOIN beta.user_info
 			ON      overall_official.last_name LIKE CONCAT(beta.user_info.last_name, '%')
 			INNER JOIN clinical_trials.brief_summary
 			ON overall_official.id = brief_summary.id
-			ORDER BY id;
+			ORDER BY id, last;
 </sql:query>
 
-<div class="container">	
-	<div class="row">
 <br><br>
-		<ul class="list-group">
-			<h4 class="list-group-item-heading">Trials</h4>
-  				<c:forEach items="${triallist.rows}" var="result_row">
-  					<li class="list-group-item">
-  						<c:out value="${result_row.id}"/>
- 						&nbsp;
-  						<c:out value="${result_row.textblock}"/>
-  					</li>
-  				</c:forEach>
-		</ul>
-	</div>
-</div>
 
-<br><br><br><br>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Trial Number</th>
+            <th>Primary Researcher</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        	<c:forEach items="${triallist.rows}" var="result_row">
+        		<tr>
+            		<td><a href="trial.jsp?id=<c:out value="${result_row.id}"/>">
+            		<c:out value="${result_row.id}"/></a></td>
+            		<td><c:out value="${result_row.last}"/></td>
+            		<td><c:out value="${result_row.textblock}"/></td>
+            	</tr>
+            </c:forEach>
+    </tbody>
+</table>
+
+<br><br>
 
 </c:if>
     
