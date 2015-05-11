@@ -31,7 +31,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Beta</a>
+          <a class="navbar-brand" href="#"><font color= #F8F8FF>&#946;</font>eta</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
 	        <c:set var="current_user" value='<%=session.getAttribute("username") %>'/>
