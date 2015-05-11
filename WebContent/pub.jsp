@@ -85,8 +85,7 @@
             				<c:out value="${result_row.abstract_text}"/>
             			</c:forEach>
             		</font>
-            	</td>
-            	<td>
+            		<br>
             		<font color=#454149>
             			<c:forEach items="${pub4.rows}" var="result_row">
             				<c:out value="${result_row.abstract_text}"/>
