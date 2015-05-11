@@ -1,22 +1,29 @@
-<%@ page language="java" isErrorPage="true" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <title>Error Page</title>
 </head>
-<body>
-
-	<h1 align="center">Some Error has occurred, please try again later...</h1>
+<body> 
+<style>
+body {
+	background-color: black;
+	}
+</style>
+	<span></span><h1 align="center"><p class="text-danger">OH NO!<br>
+	An Error has occurred, please try again later...</h1>
+	</p></span>
 	<br>
 
-	<form name="redirect">
+<form name="redirect">
 		<center>
-			You will be redirected to home page in<br><br>
+			<p class="text-danger">You will be redirected to the home page in<br><br>
 			<input type="text" size="3" name="countdown" readonly>	
-			seconds
+			seconds</p>
 		</center>
 	</form>
 	
