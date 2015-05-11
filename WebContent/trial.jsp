@@ -43,11 +43,18 @@
 			WHERE overall_official.id = ?::integer
 			<sql:param value="${param.id}"/>
 </sql:query>
+<sql:query var="trial4" dataSource="${jdbc}">
+			SELECT brief_title
+			FROM clinical_trials.clinical_study
+			WHERE clinical_study.id = ?::integer
+			<sql:param value="${param.id}"/>
+</sql:query>
+
 
 
 
 <div class="page-header">
-  <h1><c:out value="${trial3.rowsByIndex[0][0]}"/></h1>
+  <h1><c:out value="${trial4.rowsByIndex[0][0]}"/></h1><short><c:out value="${trial3.rowsByIndex[0][0]}"/></short>
 </div>
 
 <table class="table">
@@ -66,7 +73,6 @@
             </c:forEach>
     </tbody>
 </table>
-
 	<div class="container">
 		<div class="row">
 			<ul class="list-group">
@@ -81,6 +87,8 @@
 		</div>
 	</div>
 <br><br>
+
+
 
 <%@ include file="navbar_footer.jsp" %>
 
