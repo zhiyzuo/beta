@@ -56,6 +56,7 @@
 			<sql:param value="${param.pmid}"/>
 </sql:query>
 
+<div class="container">
 <div class="page-header">
   <h1>
   	<a href="http://www.ncbi.nlm.nih.gov/pubmed/<c:out value="${param.pmid}"/>">
@@ -94,7 +95,7 @@
            	</tr>
     </tbody>
 </table>
-
+</div>
 	<div class="container">
 		<div class="row">
 			<ul class="list-group">

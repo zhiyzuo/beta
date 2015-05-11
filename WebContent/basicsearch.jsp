@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-      pageEncoding="UTF-8" errorPage="error.jsp"%>
+      pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -137,6 +137,7 @@
 </sql:query>	
 
 <br><br><br><br><br>
+
 	<div class="container">
 		<div class="row">
 			<ul class="list-group">
@@ -160,7 +161,6 @@
 
 <c:if test="${param.search eq 't'}">
 
-
 <br><br><br><br><br>
 <form action="basicsearch.jsp?search=p">		
 <div class="container">
@@ -183,7 +183,7 @@
 </form>
 </c:if>
 
-<c:if test="${not empty param.keyword}">	
+<c:if test="${not empty param.keyword}">
 
 <sql:query var="trial" dataSource="${jdbc}">
 			SELECT subquery.textblock, 
@@ -206,6 +206,7 @@
 			<sql:param value="%${param.keyword}%"/>			
 </sql:query>
 <br><br><br>
+<div class="container">
 <table class="table">
     <thead>
         <tr>
@@ -223,7 +224,7 @@
             </c:forEach>
     </tbody>
 </table>
-
+</div>
 
 </c:if>
 
