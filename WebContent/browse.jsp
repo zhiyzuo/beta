@@ -68,22 +68,23 @@
 			ORDER BY title, pmid limit 1000;
 </sql:query>
 
-
-<div class="container">
-	<div class="row">
-<br><br>
-		<ul class="list-group">
-			<h4 class="list-group-item-heading">Publications</h4>
-  				<c:forEach items="${publist.rows}" var="result_row">
-  					<li class="list-group-item">
-  						<a href="http://www.ncbi.nlm.nih.gov/pubmed/${result_row.pmid}">
-  							${result_row.title}
-  						</a>
-  					</li>
-  				</c:forEach>
-		</ul>
-	</div>
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>PMID</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+        	<c:forEach items="${publist.rows}" var="result_row">
+        		<tr>
+            		<td><a href="pub.jsp?pmid=<c:out value="${result_row.pmid}"/>">
+            		<c:out value="${result_row.pmid}"/></a></td>
+            		<td><c:out value="${result_row.title}"/></td>
+            	</tr>
+            </c:forEach>
+    </tbody>
+</table>
 
 <br><br><br><br>
 </c:if>

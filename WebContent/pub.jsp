@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-     pageEncoding="UTF-8" errorPage="error.jsp"%>
+     pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -25,59 +25,73 @@
 
 <%@ include file="navbar_search.jsp" %>
 	
-<sql:query var="trial" dataSource="${jdbc}">
-			SELECT textblock as description
-			FROM clinical_trials.detailed_description
-			WHERE detailed_description.id = ?::integer
-			<sql:param value="${param.id}"/>
+<sql:query var="pub1" dataSource="${jdbc}">
+			SELECT abstract_text
+			FROM medline.abstr
+			WHERE abstr.pmid = ?::integer
+			<sql:param value="${param.pmid}"/>
 </sql:query>
-<sql:query var="trial2" dataSource="${jdbc}">
+<sql:query var="pub2" dataSource="${jdbc}">
+			SELECT title
+			FROM medline.article
+			WHERE article.pmid = ?::integer
+			<sql:param value="${param.pmid}"/>
+</sql:query>
+<sql:query var="pub3" dataSource="${jdbc}">
+			SELECT fore_name as first, last_name as last
+			FROM medline.author
+			WHERE author.pmid = ?::integer
+			<sql:param value="${param.pmid}"/>
+</sql:query>
+<sql:query var="pub4" dataSource="${jdbc}">
+			SELECT abstract_text
+			FROM medline.other_abstract_text
+			WHERE other_abstract_text.pmid = ?::integer
+			<sql:param value="${param.pmid}"/>
+</sql:query>
+<sql:query var="pub5" dataSource="${jdbc}">
 			SELECT keyword
-			FROM clinical_trials.keyword
-			WHERE keyword.id = ?::integer
-			<sql:param value="${param.id}"/>
+			FROM medline.keyword
+			WHERE keyword.pmid = ?::integer
+			<sql:param value="${param.pmid}"/>
 </sql:query>
-<sql:query var="trial3" dataSource="${jdbc}">
-			SELECT last_name
-			FROM clinical_trials.overall_official
-			WHERE overall_official.id = ?::integer
-			<sql:param value="${param.id}"/>
-</sql:query>
-<sql:query var="trial4" dataSource="${jdbc}">
-			SELECT brief_title
-			FROM clinical_trials.clinical_study
-			WHERE clinical_study.id = ?::integer
-			<sql:param value="${param.id}"/>
-</sql:query>
-
-
-
 
 <div class="page-header">
-  <h1><c:out value="${trial4.rowsByIndex[0][0]}"/></h1><short><c:out value="${trial3.rowsByIndex[0][0]}"/></short>
+  <h1>
+  <a href="http://www.ncbi.nlm.nih.gov/pubmed/<c:out value="${param.pmid}"/>">
+  <c:out value="${pub2.rowsByIndex[0][0]}"/></a></h1>
+  <c:forEach items="${pub3.rows}" var="result_row">
+  <short><c:out value="${result_row.first}"/>&nbsp;<c:out value="${result_row.last}"/>,</short>
+</c:forEach>
 </div>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Trial Number</th>
-            <th>Detailed Description</th>
+            <th>PMID</th>
+            <th>Abstract</th>
         </tr>
     </thead>
     <tbody>
-        	<c:forEach items="${trial.rows}" var="result_row">
         		<tr>
-            		<td><c:out value="${param.id}"/></td>
-            		<td><c:out value="${result_row.description}"/></td>
+            		<td><c:out value="${param.pmid}"/></td>
+            		<td>
+            		<c:forEach items="${pub1.rows}" var="result_row">
+            		<c:out value="${result_row.abstract_text}"/></td>
+            		</c:forEach>
+            		<c:forEach items="${pub4.rows}" var="result_row">
+            		<c:out value="${result_row.abstract_text}"/></td>
+            		</c:forEach>
             	</tr>
-            </c:forEach>
     </tbody>
+</table>
+
 </table>
 	<div class="container">
 		<div class="row">
 			<ul class="list-group">
 				<li class= "list-group-item"><h4>Keywords:</h4></li>
-				<c:forEach items="${trial2.rows}" var="result_row">
+				<c:forEach items="${pub5.rows}" var="result_row">
 						<li class= "list-group-item">
 							${result_row.keyword}
 						</li>
@@ -86,6 +100,9 @@
 			</ul>
 		</div>
 	</div>
+<br><br>
+
+
 <br><br>
 
 

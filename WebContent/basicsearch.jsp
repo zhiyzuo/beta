@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" errorPage="error.jsp"%>
+    pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -63,7 +63,7 @@
 <sql:query var="author2" dataSource="${jdbc}">
 			select last_name as last
 			from beta.user_info
-			where first_name = ?
+			where first_name = ?::text
 			order by last_name;
 			<sql:param value="${author.rowsByIndex[0][0]}"/>
 </sql:query>
@@ -142,7 +142,7 @@
 			<ul class="list-group">
 				<li class= "list-group-item">Publication Title:</li>
 				<c:forEach items="${pub.rows}" var="result_row">
-					<a href="http://www.ncbi.nlm.nih.gov/pubmed/${result_row.pmid}">
+					<a href="pub.jsp?pmid=<c:out value="${result_row.pmid}"/>">
 						<li class= "list-group-item">
 							${result_row.title}
 						</li>
