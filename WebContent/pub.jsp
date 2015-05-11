@@ -58,11 +58,13 @@
 
 <div class="page-header">
   <h1>
-  <a href="http://www.ncbi.nlm.nih.gov/pubmed/<c:out value="${param.pmid}"/>">
-  <c:out value="${pub2.rowsByIndex[0][0]}"/></a></h1>
-  <c:forEach items="${pub3.rows}" var="result_row">
-  <short><c:out value="${result_row.first}"/>&nbsp;<c:out value="${result_row.last}"/>,</short>
-</c:forEach>
+  	<a href="http://www.ncbi.nlm.nih.gov/pubmed/<c:out value="${param.pmid}"/>">
+  		<c:out value="${pub2.rowsByIndex[0][0]}"/>
+  	</a>
+  </h1>
+  	<c:forEach items="${pub3.rows}" var="result_row">
+  		<short><c:out value="${result_row.first}"/>&nbsp;<c:out value="${result_row.last}"/>,</short>
+	</c:forEach>
 </div>
 
 <table class="table">
@@ -73,37 +75,48 @@
         </tr>
     </thead>
     <tbody>
-        		<tr>
-            		<td><c:out value="${param.pmid}"/></td>
-            		<td>
-            		<c:forEach items="${pub1.rows}" var="result_row">
-            		<c:out value="${result_row.abstract_text}"/></td>
-            		</c:forEach>
-            		<c:forEach items="${pub4.rows}" var="result_row">
-            		<c:out value="${result_row.abstract_text}"/></td>
-            		</c:forEach>
-            	</tr>
+        	<tr>
+            	<td>
+            		<font color=#454149><c:out value="${param.pmid}"/></font>
+        		</td>
+           		<td>
+            		<font color=#454149>
+            			<c:forEach items="${pub1.rows}" var="result_row">
+            				<c:out value="${result_row.abstract_text}"/>
+            			</c:forEach>
+            		</font>
+            	</td>
+            	<td>
+            		<font color=#454149>
+            			<c:forEach items="${pub4.rows}" var="result_row">
+            				<c:out value="${result_row.abstract_text}"/>
+           				</c:forEach>
+           			</font>
+           		</td>
+           	</tr>
     </tbody>
 </table>
 
-</table>
 	<div class="container">
 		<div class="row">
 			<ul class="list-group">
-				<li class= "list-group-item"><h4>Keywords:</h4></li>
+				<li class= "list-group-item">
+					<h4>
+					<span class="label label-primary">Keywords:</span>
+					</h4>
+				</li>
 				<c:forEach items="${pub5.rows}" var="result_row">
 						<li class= "list-group-item">
+							<font color=#85A3C2>
 							${result_row.keyword}
+							</font>
 						</li>
-					</a>
 				</c:forEach>
 			</ul>
 		</div>
 	</div>
 <br><br>
 
-
-<br><br>
 
 
 

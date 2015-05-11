@@ -54,7 +54,7 @@
 
 
 <div class="page-header">
-  <h1><c:out value="${trial4.rowsByIndex[0][0]}"/></h1><short><c:out value="${trial3.rowsByIndex[0][0]}"/></short>
+  <h1><font color=#47476B><c:out value="${trial4.rowsByIndex[0][0]}"/></font></h1><short><c:out value="${trial3.rowsByIndex[0][0]}"/></short>
 </div>
 
 <table class="table">
@@ -67,8 +67,16 @@
     <tbody>
         	<c:forEach items="${trial.rows}" var="result_row">
         		<tr>
-            		<td><c:out value="${param.id}"/></td>
-            		<td><c:out value="${result_row.description}"/></td>
+            		<td>
+            			<font color=#454149>
+            			<c:out value="${param.id}"/>
+            			</font>
+            		</td>
+            		<td>
+            			<font color=#454149>
+            			<c:out value="${result_row.description}"/>
+            			</font>
+            		</td>
             	</tr>
             </c:forEach>
     </tbody>
@@ -76,12 +84,14 @@
 	<div class="container">
 		<div class="row">
 			<ul class="list-group">
-				<li class= "list-group-item"><h4>Keywords:</h4></li>
+				<li class= "list-group-item"><h4><span class="label label-primary">Keywords:</span>
+				</h4></li>
 				<c:forEach items="${trial2.rows}" var="result_row">
 						<li class= "list-group-item">
+						<font color=#85A3C2>
 							${result_row.keyword}
+						</font>	
 						</li>
-					</a>
 				</c:forEach>
 			</ul>
 		</div>
