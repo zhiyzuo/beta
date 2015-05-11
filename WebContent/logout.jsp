@@ -7,13 +7,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Logout</title>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+
 </head>
 <body>
-<style>
-body{
-	background-color:cyan;
-	}
-</style>
 	<% 
 	
 	Enumeration e = session.getAttributeNames();
@@ -24,7 +25,7 @@ body{
 
 		session.invalidate(); 
 	%> 
-	<h1 align="center"><mark>Logout Successful!</mark></h1> 
+	<h1 align="center">Logout Successful!</h1> 
 	
 	<form name="redirect">
 		<center>

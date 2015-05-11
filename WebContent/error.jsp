@@ -7,16 +7,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <title>Error Page</title>
-</head>
-<body> 
+
 <style>
 body {
 	background-color: black;
 	}
 </style>
-	<span></span><h1 align="center"><p class="text-danger">OH NO!<br>
-	An Error has occurred, please try again later...</h1>
-	</p></span>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	
+
+
+</head>
+<body> 
+	<div>
+		<h1 align="center" class="text-danger">OH NO!<br>
+		An Error has occurred, please try again later...</h1>
+	</div>
 	<br>
 
 <form name="redirect">
